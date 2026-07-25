@@ -262,13 +262,13 @@ setTools("");
   }
 
   return (
-    <main className="min-h-screen bg-black px-6 py-12 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-black px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8 lg:py-12">
       <div className="mx-auto max-w-3xl">
-        <h1 className="mb-2 text-5xl font-bold">
+        <h1 className="mb-2 text-3xl font-bold sm:text-4xl lg:text-5xl">
           {isEditing ? "Edit Project" : "Add Project"}
         </h1>
 
-        <p className="mb-10 text-zinc-400">
+        <p className="mb-8 text-sm text-zinc-400 sm:mb-10 sm:text-base">
           Publish new work to your archive.
         </p>
 
@@ -290,7 +290,7 @@ setTools("");
           <select
   value={category}
   onChange={(e) => setCategory(e.target.value)}
-  className="w-full cursor-pointer rounded-2xl border border-white/10 bg-white/5 p-4 text-white"
+  className="w-full cursor-pointer rounded-2xl border border-white/10 bg-white/5 p-3 text-sm text-white sm:p-4"
 >
   <option value="" className="bg-black">
     Select a category
@@ -408,7 +408,8 @@ setTools("");
       border
       border-white/10
       bg-white/5
-      p-4
+      p-3
+      sm:p-4
       file:mr-4
       file:cursor-pointer
       file:rounded-xl
@@ -479,7 +480,8 @@ setTools("");
     border
     border-white/10
     bg-white/5
-    p-4
+    p-3
+    sm:p-4
     file:mr-4
     file:cursor-pointer
     file:rounded-xl
@@ -492,7 +494,7 @@ setTools("");
   "
 />
 {galleryFiles.length > 0 && (
-  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
     {galleryFiles.map((file, index) => (
       <div
         key={index}
@@ -530,7 +532,7 @@ setTools("");
           <button
             type="submit"
             disabled={loading}
-            className="cursor-pointer rounded-2xl bg-orange-500 px-8 py-4 font-semibold text-black transition hover:opacity-90"
+            className="w-full cursor-pointer rounded-2xl bg-orange-500 px-6 py-3 font-semibold text-black transition hover:opacity-90 sm:w-auto sm:px-8 sm:py-4"
           >
             {loading
               ? "Saving..."
@@ -553,7 +555,7 @@ setTools("");
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-5"
+                className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5"
               >
                 <div>
                   <h3 className="font-semibold">
@@ -565,7 +567,7 @@ setTools("");
                   </p>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   <button
                     type="button"
                     onClick={() => editProject(project)}

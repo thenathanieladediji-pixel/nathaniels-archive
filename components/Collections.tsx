@@ -38,7 +38,7 @@ const collections = [
 
 export default function Collections() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black px-6 py-24 text-white sm:px-8 lg:px-16">
+    <section className="relative min-h-screen overflow-hidden overflow-x-hidden bg-black px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-10 lg:py-28">
       {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,122,0,0.12),transparent_35%)]" />
 
@@ -57,7 +57,7 @@ export default function Collections() {
         }}
         className="relative mx-auto flex max-w-5xl flex-col items-center text-center"
       >
-        <h2 className="text-3xl font-bold uppercase tracking-[0.22em] text-white sm:text-4xl lg:text-5xl">
+        <h2 className="text-2xl font-bold uppercase tracking-[0.22em] text-white sm:text-3xl lg:text-4xl xl:text-5xl">
           BROWSE MY COLLECTIONS
         </h2>
 
@@ -68,7 +68,7 @@ export default function Collections() {
       </motion.div>
 
       {/* Cards */}
-      <div className="relative mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="relative mx-auto mt-12 grid max-w-6xl gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
         {collections.map((item, index) => (
           <Link key={item.slug} href={`/archive/${item.slug}`}>
             <motion.article
@@ -84,20 +84,20 @@ export default function Collections() {
                 y: -6,
                 scale: 1.01,
               }}
-              className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-8 text-left shadow-[0_0_40px_rgba(255,122,0,0.05)] backdrop-blur-xl transition-all duration-500 hover:border-orange-400/40 hover:bg-white/[0.06]"
+              className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 text-left shadow-[0_0_40px_rgba(255,122,0,0.05)] backdrop-blur-xl transition-all duration-500 hover:border-orange-400/40 hover:bg-white/[0.06] sm:rounded-[1.75rem] sm:p-8"
             >
               <div className="absolute inset-0 rounded-[1.75rem] bg-[radial-gradient(circle_at_top_left,rgba(255,122,0,0.16),transparent_58%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
               <div className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-orange-400 via-orange-300 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
 
               <div className="relative">
-                <h3 className="text-2xl font-semibold uppercase tracking-[0.28em] text-white">
+                <h3 className="text-xl font-semibold uppercase tracking-[0.24em] text-white sm:text-2xl">
                   {item.title}
                 </h3>
 
                 <div className="mt-6 h-px w-16 bg-white/15" />
 
-                <p className="mt-6 text-sm leading-7 text-zinc-400">
+                <p className="mt-6 text-sm leading-7 text-zinc-400 sm:text-[0.95rem]">
                   {item.description}
                 </p>
               </div>

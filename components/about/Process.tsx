@@ -43,7 +43,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="relative bg-[#0B0B0B] text-white py-32 overflow-hidden">
+    <section className="relative overflow-hidden bg-[#0B0B0B] px-4 py-24 text-white sm:px-6 sm:py-28 lg:px-10 lg:py-32">
       {/* Background Glow */}
       <div className="absolute inset-0">
         <div className="absolute top-32 left-1/2 -translate-x-1/2 h-[700px] w-[700px] rounded-full bg-white/5 blur-[180px]" />
@@ -62,13 +62,13 @@ export default function Process() {
             My Process
           </p>
 
-          <h2 className="text-5xl font-bold leading-tight md:text-7xl">
+          <h2 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
             Thought Before
             <br />
             Execution.
           </h2>
 
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-neutral-400">
+          <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-neutral-400 sm:text-lg">
             Great work doesn't happen by accident. Every project follows a
             structured process that transforms ideas into meaningful
             experiences.
@@ -78,7 +78,7 @@ export default function Process() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute bottom-0 left-6 top-0 w-px bg-neutral-800" />
+          <div className="absolute bottom-0 left-4 top-0 w-px bg-neutral-800 sm:left-6" />
 
           <div className="space-y-12">
             {steps.map((step, index) => (
@@ -91,10 +91,10 @@ export default function Process() {
                   duration: 0.7,
                   delay: index * 0.08,
                 }}
-                className="relative pl-20"
+                className="relative pl-12 sm:pl-16 md:pl-20"
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-[15px] top-10 h-5 w-5 rounded-full border-4 border-[#0B0B0B] bg-white" />
+                <div className="absolute left-[11px] top-10 h-5 w-5 rounded-full border-4 border-[#0B0B0B] bg-white sm:left-[15px]" />
 
                 {/* Card */}
                 <motion.div
@@ -104,17 +104,17 @@ export default function Process() {
                     backgroundColor: "rgba(255,255,255,0.05)",
                   }}
                   transition={{ duration: 0.25 }}
-                  className="rounded-3xl border border-neutral-800 bg-white/[0.03] p-8 backdrop-blur-xl transition-all duration-300 md:p-10"
+                  className="rounded-3xl border border-neutral-800 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-300 sm:p-8 md:p-10"
                 >
                   <span className="text-sm tracking-[0.35em] text-neutral-500">
                     {step.number}
                   </span>
 
-                  <h3 className="mt-4 mb-5 text-3xl font-bold tracking-wide md:text-5xl">
+                  <h3 className="mt-4 mb-5 text-2xl font-bold tracking-wide sm:text-3xl md:text-4xl lg:text-5xl">
                     {step.title}
                   </h3>
 
-                  <p className="max-w-3xl text-lg leading-8 text-neutral-400">
+                  <p className="max-w-3xl text-base leading-8 text-neutral-400 sm:text-lg">
                     {step.description}
                   </p>
                 </motion.div>

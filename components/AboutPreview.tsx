@@ -8,17 +8,17 @@ export default function AboutPreview() {
   return (
     <section
       id="about"
-      className="bg-black px-6 py-32 text-white sm:px-10 lg:px-20"
+      className="bg-black px-4 py-24 text-white sm:px-6 sm:py-28 lg:px-10 lg:py-32"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
+        <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-[32px] border border-white/10"
+            className="relative overflow-hidden rounded-[24px] border border-white/10 sm:rounded-[32px]"
           >
             <Image
               src="/images/about/nathaniel-about.png"
@@ -47,7 +47,7 @@ export default function AboutPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.8 }}
-              className="mt-8 text-4xl font-black leading-tight sm:text-6xl"
+              className="mt-8 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl xl:text-6xl"
             >
               I design with intention,
               <br />
@@ -61,7 +61,7 @@ export default function AboutPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="mt-12 space-y-8 text-lg leading-9 text-zinc-400"
+              className="mt-10 space-y-6 text-base leading-8 text-zinc-400 sm:mt-12 sm:text-lg sm:leading-9"
             >
               <p>
                 I'm Nathaniel Adediji, a multidisciplinary designer, creative

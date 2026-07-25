@@ -10,7 +10,7 @@ import ContactSection from "@/components/ContactSection";
 export default function Home() {
   return (
     <>
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black text-white">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden overflow-x-hidden bg-black px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
 
 
         {/* Base background glow */}
@@ -221,7 +221,7 @@ export default function Home() {
 
         <motion.div
 
-          className="relative z-10 text-center"
+          className="relative z-10 mx-auto flex max-w-3xl flex-col items-center px-4 text-center sm:px-6"
 
           initial={{
             opacity:0,
@@ -263,12 +263,13 @@ export default function Home() {
 
             className="
             font-signature
-            text-5xl
+            text-4xl
             font-light
             italic
             tracking-wide
-            sm:text-6xl
-            md:text-7xl
+            sm:text-5xl
+            md:text-6xl
+            lg:text-7xl
             "
 
           >
@@ -300,11 +301,14 @@ export default function Home() {
 
             className="
             mt-2
-            text-5xl
+            text-4xl
             font-semibold
-            tracking-[0.45em]
-            sm:text-7xl
-            md:text-8xl
+            uppercase
+            tracking-[0.28em]
+            sm:mt-3
+            sm:text-6xl
+            md:text-7xl
+            lg:text-8xl
             "
 
           >
@@ -335,11 +339,14 @@ export default function Home() {
             }}
 
             className="
-            mt-10
-            text-xs
+            mt-8
+            text-[0.65rem]
             uppercase
-            tracking-[0.5em]
+            tracking-[0.4em]
             text-white/50
+            sm:mt-10
+            sm:text-xs
+            sm:tracking-[0.5em]
             "
 
           >
@@ -377,10 +384,11 @@ export default function Home() {
 
           className="
           absolute
-          bottom-10
+          bottom-6
           left-1/2
           z-20
           -translate-x-1/2
+          sm:bottom-10
           "
 
         >

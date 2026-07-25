@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ContactSection() {
   return (
-    <section className="relative overflow-hidden bg-black py-32 text-white">
+    <section className="relative overflow-hidden bg-black px-4 py-24 text-white sm:px-6 sm:py-28 lg:px-10 lg:py-32">
 
       {/* Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,122,0,0.12),transparent_60%)]" />
@@ -17,11 +17,13 @@ export default function ContactSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="
-          text-4xl
+          text-3xl
           font-semibold
           uppercase
-          tracking-[0.3em]
-          sm:text-6xl
+          tracking-[0.24em]
+          sm:text-4xl
+          lg:text-5xl
+          xl:text-6xl
           "
         >
           Let's Work Together
@@ -39,8 +41,9 @@ export default function ContactSection() {
           max-w-2xl
           text-sm
           uppercase
-          tracking-[0.25em]
+          tracking-[0.2em]
           text-white/50
+          sm:text-[0.95rem]
           "
         >
           Have a project, brand, or creative idea?
@@ -54,10 +57,12 @@ export default function ContactSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
           className="
-          mt-14
+          mt-12
           grid
-          gap-6
+          gap-4
+          sm:mt-14
           sm:grid-cols-3
+          sm:gap-6
           "
         >
 

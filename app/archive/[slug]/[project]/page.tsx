@@ -57,7 +57,7 @@ export default async function ProjectPage({
   const projectInfo = projectData as Project;
 
   return (
-    <main className="min-h-screen bg-black px-6 py-10 text-white sm:px-8 lg:px-16">
+    <main className="min-h-screen overflow-x-hidden bg-black px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-10 lg:py-12">
       <div className="mx-auto max-w-6xl">
         <Link
           href={`/archive/${slug}`}
@@ -71,11 +71,11 @@ export default async function ProjectPage({
             {projectInfo.category}
           </p>
 
-          <h1 className="mt-5 text-5xl font-black uppercase tracking-widest">
+          <h1 className="mt-5 text-3xl font-black uppercase tracking-[0.2em] sm:text-4xl lg:text-5xl">
             {projectInfo.title}
           </h1>
 
-         <div className="mt-8 grid gap-8 text-sm text-zinc-400 sm:grid-cols-3">
+         <div className="mt-8 grid gap-4 text-sm text-zinc-400 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
   {projectInfo.client && (
     <div>
       <p className="text-xs uppercase tracking-wider">
@@ -166,7 +166,7 @@ export default async function ProjectPage({
                 Tools
               </h2>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
                 {projectInfo.tools.map((tool) => (
                   <div
                     key={tool}

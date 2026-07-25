@@ -47,7 +47,7 @@ export default async function ArchiveCategoryPage({
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-black px-6 py-10 text-white sm:px-8 lg:px-16">
+    <main className="min-h-screen overflow-hidden overflow-x-hidden bg-black px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-10 lg:py-12">
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,122,0,0.14),transparent_35%)]" />
 
@@ -75,7 +75,7 @@ export default async function ArchiveCategoryPage({
           </p>
 
 
-          <h1 className="mt-5 text-4xl font-black uppercase tracking-[0.35em] text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 text-3xl font-black uppercase tracking-[0.28em] text-white sm:text-4xl lg:text-5xl xl:text-6xl">
             {categoryLabel}
           </h1>
 
@@ -96,13 +96,13 @@ export default async function ArchiveCategoryPage({
 
         ) : (
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
 
             {projects.map((project: Project) => (
 
               <article
                 key={project.id}
-                className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-7 backdrop-blur-xl transition-all duration-500 hover:border-orange-400/40 hover:bg-white/[0.06]"
+                className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl transition-all duration-500 hover:border-orange-400/40 hover:bg-white/[0.06] sm:rounded-[1.75rem] sm:p-7"
               >
 
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,122,0,0.16),transparent_58%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -112,7 +112,7 @@ export default async function ArchiveCategoryPage({
                   <img
                     src={project.cover_image}
                     alt={project.title}
-                    className="mb-6 h-56 w-full rounded-2xl object-cover"
+                    className="mb-6 h-48 w-full rounded-2xl object-cover sm:h-56"
                   />
                 )}
 
@@ -130,7 +130,7 @@ export default async function ArchiveCategoryPage({
                   </p>
 
 
-                  <h2 className="mt-4 text-2xl font-semibold uppercase tracking-[0.25em] text-white">
+                  <h2 className="mt-4 text-xl font-semibold uppercase tracking-[0.2em] text-white sm:text-2xl">
                     {project.title}
                   </h2>
 
@@ -138,7 +138,7 @@ export default async function ArchiveCategoryPage({
                   <div className="mt-6 h-px w-14 bg-white/15" />
 
 
-                  <p className="mt-6 text-sm leading-7 text-zinc-400">
+                  <p className="mt-6 text-sm leading-7 text-zinc-400 sm:text-[0.95rem]">
                     {project.role}
                   </p>
 

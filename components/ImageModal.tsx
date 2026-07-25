@@ -61,12 +61,12 @@ export default function ImageModal({
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="absolute right-6 top-6 cursor-pointer rounded-full bg-white/10 px-4 py-2 text-3xl text-white transition hover:bg-white/20"
+            className="absolute right-4 top-4 cursor-pointer rounded-full bg-white/10 px-3 py-2 text-2xl text-white transition hover:bg-white/20 sm:right-6 sm:top-6 sm:px-4 sm:text-3xl"
           >
             ×
           </button>
 
-          <p className="absolute bottom-6 text-xs uppercase tracking-[0.3em] text-zinc-400">
+          <p className="absolute bottom-4 text-[0.65rem] uppercase tracking-[0.25em] text-zinc-400 sm:bottom-6 sm:text-xs">
             Press ESC or click outside to close
           </p>
         </div>

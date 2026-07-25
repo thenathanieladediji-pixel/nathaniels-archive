@@ -10,13 +10,14 @@ export default function ProjectGallery({
   onClick,
 }: ProjectGalleryProps) {
   return (
-    <section className="mt-16">
+    <section className="mt-10 sm:mt-16">
       <div
         className="
           flex
           snap-x
           snap-mandatory
-          gap-8
+          gap-4
+          sm:gap-6
           overflow-x-auto
           pb-6
           scroll-smooth
@@ -33,7 +34,7 @@ export default function ProjectGallery({
             className="
               group
               relative
-              h-[550px]
+              h-[320px]
               min-w-[85%]
               snap-center
               overflow-hidden
@@ -44,7 +45,9 @@ export default function ProjectGallery({
               transition-all
               duration-500
               hover:scale-[1.02]
+              sm:h-[420px]
               sm:min-w-[70%]
+              lg:h-[500px]
               lg:min-w-[60%]
             "
           >
@@ -71,7 +74,7 @@ export default function ProjectGallery({
           {images.length} Project Images
         </p>
 
-        <p className="mt-3 text-sm uppercase tracking-[0.25em] text-orange-300">
+        <p className="mt-3 text-xs uppercase tracking-[0.25em] text-orange-300 sm:text-sm">
           Scroll horizontally to explore • Click any image to view fullscreen
         </p>
       </div>

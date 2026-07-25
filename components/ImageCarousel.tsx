@@ -62,12 +62,12 @@ export default function ImageCarousel({
         onClick={onClose}
         className="
           absolute
-          right-8
-          top-8
+          right-4
+          top-4
           z-50
           flex
-          h-14
-          w-14
+          h-12
+          w-12
           items-center
           justify-center
           rounded-full
@@ -90,13 +90,13 @@ export default function ImageCarousel({
 
       {/* Counter */}
 
-      <div className="absolute left-8 top-8 z-50 rounded-full border border-white/10 bg-black/40 px-5 py-3 text-sm uppercase tracking-[0.3em] text-white backdrop-blur-md">
+      <div className="absolute left-4 top-4 z-50 rounded-full border border-white/10 bg-black/40 px-3 py-2 text-[0.7rem] uppercase tracking-[0.25em] text-white backdrop-blur-md sm:left-8 sm:top-8 sm:px-5 sm:py-3 sm:text-sm">
         {current + 1} / {images.length}
       </div>
 
       {/* Image */}
 
-      <div className="flex h-screen items-center justify-center px-24">
+      <div className="flex h-screen items-center justify-center px-4 py-20 sm:px-8 md:px-16 lg:px-24">
         <img
           src={images[current]}
           alt=""
@@ -122,7 +122,7 @@ export default function ImageCarousel({
             }
             className="
               absolute
-              left-8
+              left-4
               top-1/2
               z-50
               flex
@@ -159,7 +159,7 @@ export default function ImageCarousel({
             }
             className="
               absolute
-              right-8
+              right-4
               top-1/2
               z-50
               flex
@@ -191,7 +191,7 @@ export default function ImageCarousel({
       {/* Navigation Dots */}
 
       {images.length > 1 && (
-        <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 gap-3">
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 sm:bottom-8 sm:gap-3">
           {images.map((_, index) => (
             <button
               key={index}

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black">
+    <section className="relative min-h-screen w-full overflow-hidden bg-black">
       {/* Background Image */}
       <motion.div
         initial={{ scale: 1.08, opacity: 0 }}
@@ -34,7 +34,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="absolute left-6 top-6 z-20 sm:left-10 sm:top-10 lg:left-20"
+        className="absolute left-4 top-4 z-20 sm:left-8 sm:top-8 lg:left-10"
       >
         <Link
           href="/"
@@ -53,9 +53,9 @@ export default function Hero() {
           duration: 1,
           ease: "easeOut",
         }}
-        className="absolute bottom-10 left-0 w-full px-6 sm:px-10 lg:px-20"
+        className="absolute bottom-6 left-0 w-full px-4 sm:bottom-8 sm:px-6 lg:px-10 xl:px-20"
       >
-        <h1 className="text-5xl font-black tracking-tight text-white sm:text-7xl lg:text-8xl">
+        <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
           Nathaniel Adediji
         </h1>
 
@@ -83,7 +83,7 @@ export default function Hero() {
           repeat: Infinity,
           duration: 2,
         }}
-        className="absolute bottom-10 right-8 flex flex-col items-center gap-2 text-white"
+        className="absolute bottom-6 right-4 flex flex-col items-center gap-2 text-white sm:bottom-8 sm:right-8"
       >
         <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-400">
           Scroll

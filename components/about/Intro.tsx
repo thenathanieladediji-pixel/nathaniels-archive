@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Intro() {
   return (
-    <section className="bg-black px-6 py-32 text-white sm:px-10 lg:px-20">
+    <section className="bg-black px-4 py-24 text-white sm:px-6 sm:py-28 lg:px-10 lg:py-32">
       <div className="mx-auto max-w-5xl">
         <motion.p
           initial={{ opacity: 0, y: 25 }}
@@ -21,7 +21,7 @@ export default function Intro() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-8 max-w-4xl text-4xl font-black leading-tight sm:text-6xl"
+          className="mt-8 max-w-4xl text-3xl font-black leading-tight sm:text-4xl lg:text-5xl xl:text-6xl"
         >
           Great work doesn't begin
           <br />
@@ -35,7 +35,7 @@ export default function Intro() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="mt-14 space-y-8 text-xl leading-9 text-zinc-400"
+          className="mt-14 space-y-6 text-base leading-8 text-zinc-400 sm:text-lg sm:leading-9 xl:text-xl"
         >
           <p>
             Long before I started building websites or designing brands, I was

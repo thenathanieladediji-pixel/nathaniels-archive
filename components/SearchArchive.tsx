@@ -29,7 +29,7 @@ export default function SearchArchive() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-black px-6 py-24 sm:px-8 lg:px-16">
+    <section className="relative overflow-hidden overflow-x-hidden border-t border-white/10 bg-black px-4 py-20 sm:px-6 sm:py-24 lg:px-10 lg:py-28">
 
       <div className="absolute inset-0">
         <div className="absolute left-[15%] top-[20%] h-72 w-72 rounded-full bg-orange-500/10 blur-[140px]" />
@@ -44,7 +44,7 @@ export default function SearchArchive() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-3xl font-light uppercase tracking-[0.4em] text-white sm:text-4xl lg:text-5xl"
+          className="text-2xl font-light uppercase tracking-[0.3em] text-white sm:text-3xl lg:text-4xl xl:text-5xl"
         >
           WHAT ARE YOU LOOKING FOR?
         </motion.h2>
@@ -58,7 +58,7 @@ export default function SearchArchive() {
             delay: 0.1,
             ease: "easeOut",
           }}
-          className="mt-6 max-w-2xl text-sm uppercase tracking-[0.35em] text-zinc-400 sm:text-base"
+          className="mt-6 max-w-2xl text-sm uppercase tracking-[0.3em] text-zinc-400 sm:text-base"
         >
           Explore a collection of brands, interfaces and digital experiences
           I've built.
@@ -84,7 +84,7 @@ export default function SearchArchive() {
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,122,0,0.14),transparent_60%)]" />
 
-            <div className="relative flex items-center px-5 py-4 sm:px-7 sm:py-5">
+            <div className="relative flex flex-col items-stretch px-4 py-3 sm:flex-row sm:items-center sm:px-7 sm:py-5">
 
               <div className="flex-1">
 
@@ -112,11 +112,11 @@ export default function SearchArchive() {
                       );
                     }
                   }}
-                  className="w-full bg-transparent text-base text-white outline-none sm:text-lg"
+                  className="w-full bg-transparent pb-2 text-base text-white outline-none sm:pb-0 sm:text-lg"
                 />
 
                 {search === "" && (
-                  <div className="pointer-events-none absolute left-5 top-1/2 flex -translate-y-1/2 items-center text-left text-sm text-zinc-400 sm:left-7 sm:text-base">
+                  <div className="pointer-events-none absolute left-4 top-1/2 flex -translate-y-1/2 items-center text-left text-sm text-zinc-400 sm:left-7 sm:text-base">
 
                     <span className="mr-3 text-zinc-500">
                       ⌕
@@ -151,7 +151,7 @@ export default function SearchArchive() {
                   duration: 0.3,
                   ease: "easeOut",
                 }}
-                className="ml-3 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-transparent text-zinc-100"
+                className="ml-0 mt-3 flex h-11 w-11 items-center justify-center self-end rounded-full border border-white/10 bg-transparent text-zinc-100 sm:ml-3 sm:mt-0 sm:self-auto"
               >
                 <svg
                   viewBox="0 0 24 24"
