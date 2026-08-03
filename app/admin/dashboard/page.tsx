@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { getCategories, type CategoryRecord } from "@/lib/categories";
 
 export default function DashboardPage() {
   const supabase = createClient();
@@ -29,7 +31,27 @@ function removeGalleryImage(index: number) {
 
 const [featured, setFeatured] = useState(false);
 
-  const [projects, setProjects] = useState<any[]>([]);
+  type ProjectRecord = {
+    id: string;
+    title: string;
+    slug: string;
+    category: string;
+    client: string;
+    year: string;
+    role: string;
+    description: string;
+    challenge: string;
+    solution: string;
+    result: string;
+    tools: string[];
+    featured: boolean;
+    cover_image?: string;
+    created_at?: string;
+  };
+
+  const [projects, setProjects] = useState<ProjectRecord[]>([]);
+
+  const [categories, setCategories] = useState<CategoryRecord[]>([]);
 
   const [editingId, setEditingId] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -37,9 +59,19 @@ const [featured, setFeatured] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
+ useEffect(() => {
+  void fetchProjects();
+  void fetchCategories();
+}, []);
+
+async function fetchCategories() {
+  try {
+    const categoryData = await getCategories();
+    setCategories(categoryData);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
   async function fetchProjects() {
     const { data, error } = await supabase
@@ -52,7 +84,7 @@ const [featured, setFeatured] = useState(false);
       return;
     }
 
-    setProjects(data || []);
+    setProjects((data ?? []) as ProjectRecord[]);
   }
 
   async function deleteProject(id: string) {
@@ -75,7 +107,7 @@ const [featured, setFeatured] = useState(false);
     await fetchProjects();
   }
 
-  function editProject(project: any) {
+  function editProject(project: ProjectRecord) {
     setTitle(project.title || "");
     setSlug(project.slug || "");
     setCategory(project.category || "");
@@ -114,7 +146,7 @@ setGalleryFiles([]);
     setMessage("");
 
     let imageUrl = "";
-let galleryUrls: string[] = [];
+const galleryUrls: string[] = [];
 
 if (galleryFiles.length > 0) {
   for (const file of galleryFiles) {
@@ -163,7 +195,7 @@ if (galleryFiles.length > 0) {
     }
 
     if (isEditing && editingId) {
-     const updateData: any = {
+     const updateData: Record<string, unknown> = {
   title,
   slug,
   category,
@@ -287,7 +319,7 @@ setTools("");
             className="w-full rounded-2xl border border-white/10 bg-white/5 p-4"
           />
 
-          <select
+        <select
   value={category}
   onChange={(e) => setCategory(e.target.value)}
   className="w-full cursor-pointer rounded-2xl border border-white/10 bg-white/5 p-3 text-sm text-white sm:p-4"
@@ -296,35 +328,16 @@ setTools("");
     Select a category
   </option>
 
-  <option value="real-estate" className="bg-black">
-    Real Estate
-  </option>
-
-  <option value="food" className="bg-black">
-    Food
-  </option>
-
-  <option value="events" className="bg-black">
-    Events
-  </option>
-
-  <option value="hospitality" className="bg-black">
-    Hospitality
-  </option>
-
-  <option value="medicine" className="bg-black">
-    Medicine
-  </option>
-
-  <option value="cyber" className="bg-black">
-    Cyber
-  </option>
-
-  <option value="beverages" className="bg-black">
-    Beverages
-  </option>
+  {categories.map((cat) => (
+    <option
+      key={cat.id}
+      value={cat.slug}
+      className="bg-black"
+    >
+      {cat.name}
+    </option>
+  ))}
 </select>
-
           <input
             value={client}
             onChange={(e) => setClient(e.target.value)}
@@ -424,9 +437,11 @@ setTools("");
 
   {coverPreview && (
     <div className="relative overflow-hidden rounded-2xl border border-white/10">
-      <img
+      <Image
         src={coverPreview}
         alt="Cover preview"
+        width={1200}
+        height={800}
         className="h-64 w-full object-cover"
       />
 
@@ -500,9 +515,11 @@ setTools("");
         key={index}
         className="relative overflow-hidden rounded-2xl"
       >
-        <img
+        <Image
           src={URL.createObjectURL(file)}
           alt={`Preview ${index}`}
+          width={400}
+          height={300}
           className="h-32 w-full object-cover"
         />
 
