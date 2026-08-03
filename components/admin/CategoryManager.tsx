@@ -251,7 +251,8 @@ export default function CategoryManager() {
         return;
       }
 
-      const counts = (projectsData ?? []).reduce<Record<string, number>>((acc, project) => {
+      const projectRows = (projectsData ?? []) as Array<{ category?: string | null }>;
+      const counts = projectRows.reduce<Record<string, number>>((acc, project) => {
         const current = project.category as string | null;
         if (!current) return acc;
         const key = current.toLowerCase();
@@ -407,7 +408,8 @@ export default function CategoryManager() {
           return;
         }
 
-        const matchingIds = (linkedProjects ?? [])
+        const linkedProjectRows = (linkedProjects ?? []) as Array<{ id: string; category?: string | null }>;
+        const matchingIds = linkedProjectRows
           .filter((project) => {
             const currentValue = (project.category ?? "").toString().trim().toLowerCase();
             return currentValue === deletingCategory.slug.toLowerCase() || currentValue === deletingCategory.name.toLowerCase();
