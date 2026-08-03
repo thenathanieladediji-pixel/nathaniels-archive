@@ -206,7 +206,7 @@ function DeleteCategoryModal({
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
       <div className="w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-950 p-6 shadow-2xl">
         <h2 className="text-xl font-semibold text-white">Delete “{category.name}”?</h2>
-        <p className="mt-3 text-sm text-zinc-400">Deleting this category will not remove the associated projects. If projects are using it, the delete is blocked.</p>
+        <p className="mt-3 text-sm text-zinc-400">Deleting this category will clear its value from any linked projects before removing the category.</p>
 
         <div className="mt-8 flex justify-end gap-3">
           <button type="button" onClick={onClose} disabled={saving} className="rounded-full border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 disabled:cursor-not-allowed disabled:opacity-50">
@@ -353,16 +353,31 @@ export default function CategoryManager() {
 
     try {
       if (editingCategory) {
-        const { error } = await supabase.from("categories").update(payload).eq("id", editingCategory.id);
+        const { data, error } = await supabase
+          .from("categories")
+          .update(payload)
+          .eq("id", editingCategory.id)
+          .select("id");
+
         if (error) {
+          console.error("Category update failed", error);
           pushToast(error.message, "error");
           setSaving(false);
           return;
         }
+
+        if (!data || data.length === 0) {
+          console.error("Category update did not affect any rows", { id: editingCategory.id });
+          pushToast("The category could not be updated in Supabase.", "error");
+          setSaving(false);
+          return;
+        }
+
         pushToast("Category updated successfully.");
       } else {
         const { error } = await supabase.from("categories").insert(payload);
         if (error) {
+          console.error("Category create failed", error);
           pushToast(error.message, "error");
           setSaving(false);
           return;
@@ -381,22 +396,55 @@ export default function CategoryManager() {
     if (!deletingCategory) return;
 
     const hasProjects = (projectCounts[deletingCategory.id] ?? 0) > 0;
-    if (hasProjects) {
-      pushToast("This category contains projects and cannot be deleted.", "error");
-      setDeleteModalOpen(false);
-      setDeletingCategory(null);
-      return;
-    }
 
     setSaving(true);
     try {
-      const { error } = await supabase.from("categories").delete().eq("id", deletingCategory.id);
+      if (hasProjects) {
+        const { data: linkedProjects, error: fetchError } = await supabase.from("projects").select("id, category");
+        if (fetchError) {
+          pushToast(fetchError.message, "error");
+          setSaving(false);
+          return;
+        }
+
+        const matchingIds = (linkedProjects ?? [])
+          .filter((project) => {
+            const currentValue = (project.category ?? "").toString().trim().toLowerCase();
+            return currentValue === deletingCategory.slug.toLowerCase() || currentValue === deletingCategory.name.toLowerCase();
+          })
+          .map((project) => project.id);
+
+        if (matchingIds.length > 0) {
+          const { error: updateError } = await supabase.from("projects").update({ category: "" }).in("id", matchingIds);
+          if (updateError) {
+            pushToast(updateError.message, "error");
+            setSaving(false);
+            return;
+          }
+        }
+      }
+
+      const { data, error } = await supabase
+        .from("categories")
+        .delete()
+        .eq("id", deletingCategory.id)
+        .select("id");
+
       if (error) {
+        console.error("Category delete failed", error);
         pushToast(error.message, "error");
         setSaving(false);
         return;
       }
-      pushToast("Category deleted successfully.");
+
+      if (!data || data.length === 0) {
+        console.error("Category delete did not affect any rows", { id: deletingCategory.id });
+        pushToast("The category could not be deleted in Supabase.", "error");
+        setSaving(false);
+        return;
+      }
+
+      pushToast(hasProjects ? "Category deleted and linked projects were updated." : "Category deleted successfully.");
       await loadData();
       setDeleteModalOpen(false);
       setDeletingCategory(null);
