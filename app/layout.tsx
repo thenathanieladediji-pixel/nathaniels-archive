@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Nathaniel's Archive",
   description: "Portfolio archive and admin experience",
+  verification: {
+    google: "vgNpcl95VifV6VLD6lszovpEw2J4sf9eMUTmMuvxqYk",
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         <ToastProvider>{children}</ToastProvider>
       </body>
     </html>
